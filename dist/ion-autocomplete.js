@@ -9,8 +9,8 @@
 'use strict';
 
 angular.module('ion-autocomplete', []).directive('ionAutocomplete', [
-    '$ionicTemplateLoader', '$ionicBackdrop', '$ionicScrollDelegate', '$rootScope', '$document', '$q', '$parse', '$ionicPlatform',
-    function ($ionicTemplateLoader, $ionicBackdrop, $ionicScrollDelegate, $rootScope, $document, $q, $parse, $ionicPlatform) {
+    '$ionicTemplateLoader', '$ionicScrollDelegate', '$rootScope', '$document', '$q', '$parse', '$ionicPlatform',
+    function ($ionicTemplateLoader, $ionicScrollDelegate, $rootScope, $document, $q, $parse, $ionicPlatform) {
         return {
             require: '?ngModel',
             restrict: 'A',
@@ -231,7 +231,6 @@ angular.module('ion-autocomplete', []).directive('ionAutocomplete', [
                     });
 
                     var displaySearchContainer = function () {
-                        $ionicBackdrop.retain();
                         compiledTemplate.element.css('display', 'block');
                         scope.$deregisterBackButton = $ionicPlatform.registerBackButtonAction(function () {
                             hideSearchContainer();
@@ -240,7 +239,6 @@ angular.module('ion-autocomplete', []).directive('ionAutocomplete', [
 
                     var hideSearchContainer = function () {
                         compiledTemplate.element.css('display', 'none');
-                        $ionicBackdrop.release();
                         scope.$deregisterBackButton && scope.$deregisterBackButton();
                     };
 
